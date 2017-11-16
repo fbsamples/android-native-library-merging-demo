@@ -17,9 +17,11 @@
 package com.facebook.example.habitat;
 
 public class Ice {
+  static {
+    System.loadLibrary("habitat");
+  }
+
   private static int dxWorkaround = 0;
 
-  public static String getName() {
-    return "ice";
-  }
+  public static native String getName();
 }

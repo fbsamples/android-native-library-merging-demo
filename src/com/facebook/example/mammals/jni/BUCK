@@ -1,0 +1,8 @@
+cxx_library(
+    name = "jni",
+    soname = "libmammals.$(ext)",
+    srcs = glob(["*.c"]),
+    visibility = [
+        "//src/com/facebook/example/mammals:mammals",
+    ],
+)

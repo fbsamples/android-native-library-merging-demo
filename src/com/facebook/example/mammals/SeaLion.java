@@ -17,11 +17,13 @@
 package com.facebook.example.mammals;
 
 public class SeaLion {
+  static {
+    System.loadLibrary("mammals");
+  }
+
   public static String getDescription() {
     return "just a " + getName();
   }
 
-  private static String getName() {
-    return "sea lion";
-  }
+  private static native String getName();
 }

@@ -3,6 +3,7 @@ android_library(
     manifest = "manifest.xml",
     srcs = glob(["*.java"]),
     deps = [
+        "//src/com/facebook/example/animals/jni:jni",
         "//src/com/facebook/example/habitat:habitat",
         "//src/com/facebook/example/mammals:mammals",
     ],

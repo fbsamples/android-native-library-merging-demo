@@ -2,6 +2,7 @@ java_library(
     name = "habitat",
     srcs = glob(["*.java"]),
     deps = [
+        "//src/com/facebook/example/habitat/jni:jni",
     ],
     visibility = ["PUBLIC"],
 )

@@ -2,6 +2,7 @@ java_library(
     name = "mammals",
     srcs = glob(["*.java"]),
     deps = [
+        "//src/com/facebook/example/mammals/jni:jni",
     ],
     visibility = ["PUBLIC"],
 )

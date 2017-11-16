@@ -19,11 +19,13 @@ package com.facebook.example.animals;
 import com.facebook.example.habitat.Ice;
 
 public class Penguin {
+  static {
+    System.loadLibrary("animals");
+  }
+
   public static String getDescription() {
     return getName() + " on " + Ice.getName();
   }
 
-  private static String getName() {
-    return "penguin";
-  }
+  private static native String getName();
 }
