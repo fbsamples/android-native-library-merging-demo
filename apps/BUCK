@@ -1,0 +1,23 @@
+android_binary(
+    name = "mammals",
+    manifest_skeleton = "mammals-app-manifest.xml",
+    keystore = ":debug_keystore",
+    deps = [
+        "//src/com/facebook/example/mammals/activity:activity",
+    ],
+)
+
+android_binary(
+    name = "animals",
+    manifest_skeleton = "animals-app-manifest.xml",
+    keystore = ":debug_keystore",
+    deps = [
+        "//src/com/facebook/example/animals:animals",
+    ],
+)
+
+keystore(
+ name = "debug_keystore",
+ properties = "debug.keystore.properties",
+ store = "debug.keystore",
+)

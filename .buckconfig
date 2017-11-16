@@ -1,0 +1,10 @@
+[java]
+    src_roots = src
+[android]
+    target = android-25
+    build_tools_version = 26.0.2
+[ndk]
+    ndk_version = 15.2.4203891
+    gcc_version = 4.9
+    app_platform = android-15
+    cpu_abis = armv7, x86

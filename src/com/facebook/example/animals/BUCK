@@ -1,0 +1,10 @@
+android_library(
+    name = "animals",
+    manifest = "manifest.xml",
+    srcs = glob(["*.java"]),
+    deps = [
+        "//src/com/facebook/example/habitat:habitat",
+        "//src/com/facebook/example/mammals:mammals",
+    ],
+    visibility = ["PUBLIC"],
+)
