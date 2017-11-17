@@ -17,10 +17,11 @@
 package com.facebook.example.animals;
 
 import com.facebook.example.habitat.Ice;
+import com.facebook.soloader.SoLoader;
 
 public class Penguin {
   static {
-    System.loadLibrary("animals");
+    SoLoader.loadLibrary("animals");
   }
 
   public static String getDescription() {

@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package com.facebook.example.habitat;
+package com.facebook.soloader;
 
-import com.facebook.soloader.SoLoader;
-
-public class Ice {
-  static {
-    SoLoader.loadLibrary("habitat");
+class MergedSoMapping {
+  static String mapLibName(String preMergedLibName) {
+    return null;
   }
 
-  private static int dxWorkaround = 0;
-
-  public static native String getName();
+  static void invokeJniOnload(String preMergedLibName) {
+    throw new IllegalArgumentException(
+        "Unknown library: " + preMergedLibName);
+  }
 }

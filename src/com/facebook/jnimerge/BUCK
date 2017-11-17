@@ -1,0 +1,34 @@
+python_library(
+    name = "code-gen-lib",
+    srcs = ["map_code_generator.py"],
+)
+
+python_binary(
+    name = "code-generator",
+    main_module = "src.com.facebook.jnimerge.map_code_generator",
+    visibility = ["PUBLIC"],
+    deps = [
+        ":code-gen-lib",
+    ],
+)
+
+cxx_library(
+    name = "jnimerge",
+    exported_headers = [
+        "jni_lib_merge.h",
+    ],
+    header_namespace = "",
+    visibility = ["PUBLIC"],
+)
+
+cxx_library(
+    name = "glue",
+    srcs = [
+        "jni_lib_merge.c",
+    ],
+    force_static = True,
+    headers = [
+        "jni_lib_merge.h",
+    ],
+    visibility = ["PUBLIC"],
+)

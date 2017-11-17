@@ -3,6 +3,7 @@ java_library(
     srcs = glob(["*.java"]),
     deps = [
         "//src/com/facebook/example/habitat/jni:jni",
+        "//src/com/facebook/soloader:soloader",
     ],
     visibility = ["PUBLIC"],
 )

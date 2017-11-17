@@ -1,16 +1,24 @@
-android_binary(
+include_defs("//bucklets/DEFS")
+
+my_android_binary(
     name = "mammals",
     manifest_skeleton = "mammals-app-manifest.xml",
     keystore = ":debug_keystore",
+    native_library_merge_map = {
+        "libeverything.so": [".*"],
+    },
     deps = [
         "//src/com/facebook/example/mammals/activity:activity",
     ],
 )
 
-android_binary(
+my_android_binary(
     name = "animals",
     manifest_skeleton = "animals-app-manifest.xml",
     keystore = ":debug_keystore",
+    native_library_merge_map = {
+        "libeverything.so": [".*"],
+    },
     deps = [
         "//src/com/facebook/example/animals:animals",
     ],

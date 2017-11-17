@@ -1,6 +1,9 @@
-cxx_library(
+include_defs("//bucklets/DEFS")
+
+my_cxx_library(
     name = "jni",
     soname = "libhabitat.$(ext)",
+    allow_jni_merging = True,
     srcs = glob(["*.c"]),
     visibility = [
         "//src/com/facebook/example/habitat:habitat",

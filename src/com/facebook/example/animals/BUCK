@@ -6,6 +6,7 @@ android_library(
         "//src/com/facebook/example/animals/jni:jni",
         "//src/com/facebook/example/habitat:habitat",
         "//src/com/facebook/example/mammals:mammals",
+        "//src/com/facebook/soloader:soloader",
     ],
     visibility = ["PUBLIC"],
 )

@@ -1,0 +1,18 @@
+java_library(
+    name = "soloader",
+    srcs = [
+        "SoLoader.java",
+    ],
+    provided_deps = [
+        ":mapping-stub",
+    ],
+    visibility = ["PUBLIC"],
+)
+
+java_library(
+    name = "mapping-stub",
+    srcs = ["MergedSoMapping.java"],
+    deps = [
+    ],
+    visibility = ["PUBLIC"],
+)

@@ -1,0 +1,33 @@
+def my_android_binary(**kwargs):
+    if "native_library_merge_map" in kwargs:
+        kwargs["native_library_merge_glue"] = "//src/com/facebook/jnimerge:glue"
+        kwargs["native_library_merge_code_generator"] = "//src/com/facebook/jnimerge:code-generator"
+        kwargs["native_library_merge_localized_symbols"] = [
+            "__start_pre_merge_jni_libraries",
+            "__stop_pre_merge_jni_libraries",
+        ]
+    else:
+        kwargs["deps"] = kwargs["deps"] + ["//src/com/facebook/soloader:mapping-stub"]
+    android_binary(**kwargs)
+
+
+def my_cxx_library(**kwargs):
+    if kwargs.pop("allow_jni_merging", None):
+        if "soname" not in kwargs:
+            raise Exception(
+                "JNI merging currently requires an explicit soname, "
+                "but %s doesn't have one."
+                % kwargs["name"])
+        kwargs["deps"] = kwargs.get("deps", []) + ["//src/com/facebook/jnimerge:jnimerge"]
+        kwargs["platform_preprocessor_flags"] = \
+            kwargs.get("platform_preprocessor_flags", []) + [
+                (r'.*\bandroid\b.*', [
+                    '-DORIGINAL_SONAME="%s"' % kwargs["soname"].replace("$(ext)", "so"),
+                    "-include", "jni_lib_merge.h",
+                ])]
+        kwargs["platform_linker_flags"] = kwargs.get("platform_linker_flags", []) + [
+            (r'.*\bandroid\b.*', [
+                "-Wl,--defsym=JNI_OnLoad=JNI_OnLoad_Weak",
+            ])]
+    cxx_library(**kwargs)
+

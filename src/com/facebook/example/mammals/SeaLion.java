@@ -16,9 +16,11 @@
 
 package com.facebook.example.mammals;
 
+import com.facebook.soloader.SoLoader;
+
 public class SeaLion {
   static {
-    System.loadLibrary("mammals");
+    SoLoader.loadLibrary("mammals");
   }
 
   public static String getDescription() {
