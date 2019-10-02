@@ -45,7 +45,13 @@ __attribute__ ((__section__("pre_merge_jni_libraries")))
 };
 
 // References to custom section bounds, filled in by linker.
+// Marking these hidden here takes precedence over the global visibility
+// of the generated symbols.  This ensures that they are hidden in
+// the shared object, so they can't be accidentally referenced by
+// another merged library.
+__attribute__ ((__visibility__("hidden")))
 extern struct pre_merge_jni_library __start_pre_merge_jni_libraries;
+__attribute__ ((__visibility__("hidden")))
 extern struct pre_merge_jni_library __stop_pre_merge_jni_libraries;
 
 

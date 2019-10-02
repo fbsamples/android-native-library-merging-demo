@@ -126,8 +126,9 @@ This is not a problem when producing a single merged library,
 but when there are multiple libraries,
 they can end up pointing to each other's custom sections,
 which breaks registration.
-We got around this with some custom code
-that converts those symbols to private in the dynamic symbol table.
+Declaring the references to these symbols as hidden
+takes precedence over the linker-generaged global symbols,
+so the symbols become hidden and the problem goes away.
 
 [gold_global]: https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=gold/layout.cc;hb=refs/tags/binutils-2_29_1.1#l2186
 

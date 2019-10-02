@@ -2,10 +2,6 @@ def my_android_binary(**kwargs):
     if "native_library_merge_map" in kwargs:
         kwargs["native_library_merge_glue"] = "//src/com/facebook/jnimerge:glue"
         kwargs["native_library_merge_code_generator"] = "//src/com/facebook/jnimerge:code-generator"
-        kwargs["native_library_merge_localized_symbols"] = [
-            "__start_pre_merge_jni_libraries",
-            "__stop_pre_merge_jni_libraries",
-        ]
     else:
         kwargs["deps"] = kwargs["deps"] + ["//src/com/facebook/soloader:mapping-stub"]
     android_binary(**kwargs)
